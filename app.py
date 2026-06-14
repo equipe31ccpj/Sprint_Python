@@ -2,6 +2,7 @@ import sys
 import random
 
 qnt_carros_no_posto = 0
+opcao = 0
 carros_no_posto = []
 potencia_por_carregador = 22
 potencia_max_posto = 100
@@ -34,15 +35,19 @@ def adicionar_carro():
 	return carros_no_posto, qnt_carros_no_posto
 
 def calcular_potencia_por_carro(qnt_carros_no_posto):
-	global potencia_max_posto
-	global potencia_por_carregador
-	potencia_desejada = qnt_carros_no_posto * potencia_por_carregador
-	if potencia_desejada <= potencia_max_posto:
-		potencia_por_carro = potencia_por_carregador
-	else:
-		potencia_por_carro = potencia_max_posto / qnt_carros_no_posto
+    global potencia_max_posto
+    global potencia_por_carregador
+    
+    potencia_desejada = qnt_carros_no_posto * potencia_por_carregador
+    
+    if qnt_carros_no_posto == 0:
+        potencia_por_carro = 0
+    elif potencia_desejada <= potencia_max_posto:
+        potencia_por_carro = potencia_por_carregador
+    else:
+        potencia_por_carro = potencia_max_posto / qnt_carros_no_posto
 
-	return potencia_por_carro
+    return potencia_por_carro
 
 def remover_carro():
 	global carros_no_posto
@@ -87,19 +92,21 @@ def menu():
 			print('Opção invalída')
 
 def redirecionar_escolha(opcao):
+	global qn
 	match opcao:
 		case 1:
 			adicionar_carro()
 		case 2:
 			remover_carro()
 		case 3:
-			potencia_por_carro = calcular_potencia_por_carro()
+			potencia_por_carro = calcular_potencia_por_carro(qnt_carros_no_posto)
 			print(f'Poténcia atual por carro: {potencia_por_carro:.2f} kW')
 		case 4:
+			print('Saíndo do sistema.')
 			sys.exit()
 
 def main():
-	opcao = 0
+	global opcao
 	while opcao != 4:
 		opcao = menu()
 		redirecionar_escolha(opcao)
