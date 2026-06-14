@@ -1,3 +1,4 @@
+import sys
 import random
 
 qnt_carros_no_posto = 0
@@ -84,3 +85,14 @@ def menu():
 			return opcao
 		else:
 			print('Opção invalída')
+
+def redirecionar_escolha(opcao):
+	match opcao:
+		case 1:
+			adicionar_carro()
+		case 2:
+			remover_carro()
+		case 3:
+			calcular_potencia_por_carro()
+		case 4:
+			sys.exit()
