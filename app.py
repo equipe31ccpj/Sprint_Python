@@ -93,6 +93,16 @@ def redirecionar_escolha(opcao):
 		case 2:
 			remover_carro()
 		case 3:
-			calcular_potencia_por_carro()
+			potencia_por_carro = calcular_potencia_por_carro()
+			print(f'Poténcia atual por carro: {potencia_por_carro:.2f} kW')
 		case 4:
 			sys.exit()
+
+def main():
+	opcao = 0
+	while opcao != 4:
+		opcao = menu()
+		redirecionar_escolha(opcao)
+
+if __name__ == '__main__':
+	main()
