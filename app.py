@@ -34,9 +34,10 @@ def adicionar_carro():
 
 def calcular_potencia_por_carro(qnt_carros_no_posto):
     global potencia_max_posto
-    potencia_desejada = qnt_carros_no_posto * 22
+    global potencia_por_carregador
+    potencia_desejada = qnt_carros_no_posto * potencia_por_carregador
     if potencia_desejada <= potencia_max_posto:
-        potencia_por_carro = 22
+        potencia_por_carro = potencia_por_carregador
     else:
         potencia_por_carro = potencia_max_posto / qnt_carros_no_posto
 
