@@ -1,5 +1,7 @@
 import random
 
+qnt_carros_no_posto = 0
+carros_no_posto = []
 potencia_por_carregador = 22
 potencia_max_posto = 100
 
@@ -19,4 +21,16 @@ carros = [
 
 def escolher_carro():
     return random.choice(carros)
+
+def adicionar_carro():
+    global carros_no_posto
+    global qnt_carros_no_posto
+    marca, modelo = escolher_carro()
+    carro = f"{marca} {modelo}"
+    carros_no_posto.append(carro)
+    qnt_carros_no_posto += 1
+
+    return carros_no_posto, qnt_carros_no_posto
+
+
 
